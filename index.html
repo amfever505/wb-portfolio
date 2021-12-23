@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <title>ポートフォリオサイト</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0" />
+    <script src="/js/custom.js"></script>
+
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="flex-box" id="app">
+        <div class="sidebar">
+          <div class="profile">
+            <img src="images/profile-icon.png" alt="" />
+            <div class="txt">
+              陳　姿穎<br />
+              専門学校HAL東京<br />
+              IT学部WEB開発学科 2年生
+            </div>
+          </div>
+          <div class="navGroup" v-bind:class="{navAct: !projectFlg}">
+            <button v-bind:disabled="projectFlg" v-on:click="projectPage" class="nav">WEB制作</button>
+            <button v-bind:disabled="!projectFlg" v-on:click="projectPage" class="nav">UIデザイン</button>
+          </div>
+        </div>
+        <div class="main" id="main">
+          <div class="project" id="project" v-if="projectFlg">
+            <div class="project-nav">
+              <button
+                v-for="(projectContent,index) in projectContents"
+                @click="selectedCardIndex = index"
+                :id="'web-' + projectContent.nav.id"
+              >
+                <div class="card">
+                  <div class="imgbox">
+                    <div class="imgbox__inner imgbox__inner--4-3">
+                      <div class="image" v-bind:style="{backgroundImage: projectContent.nav.url}"></div>
+                    </div>
+                  </div>
+                  <h5>{{projectContent.nav.title}}</h5>
+                  <p>{{projectContent.nav.type}}</p>
+                </div>
+              </button>
+            </div>
+            <div class="project-content">
+              <!-- <div v-for="projectContent in projectContents" class="content"> -->
+              <div class="content">
+                <h2>{{projectContent.title}}</h2>
+                <img :src="projectContent.thumbnail" alt="" />
+                <div class="detailRow">
+                  <div class="ttl">概要</div>
+                  <div class="txt">{{projectContent.descrip}}</div>
+                </div>
+                <div class="detailRow">
+                  <div class="ttl">開発環境</div>
+                  <div class="txt">
+                    <img v-for="skill in projectContent.skills" :src="skill" alt="" />
+                  </div>
+                </div>
+                <div v-if="projectContent.link" class="detailRow">
+                  <div class="ttl">　</div>
+                  <div class="txt">
+                    <a :href="projectContent.link" target="_blank" rel="noopener noreferrer">サイトへ</a>
+                  </div>
+                </div>
+                <div class="detailRow">
+                  <div class="ttl">制作規模 / 役割</div>
+                  <div class="txt">{{projectContent.role}}</div>
+                </div>
+                <div class="detailRow">
+                  <div class="ttl">制作背景</div>
+                  <div class="txt">{{projectContent.background}}</div>
+                </div>
+                <div class="detailRow">
+                  <div class="ttl">ターゲット</div>
+                  <div class="txt">{{projectContent.target}}</div>
+                </div>
+                <div class="detailRow">
+                  <div class="ttl">こだわり</div>
+                  <div class="txt">
+                    <p v-for="kodawari in projectContent.kodawaris">▪︎ {{kodawari}}<br /></p>
+                  </div>
+                </div>
+                <div v-if="projectContent.awards" class="detailRow">
+                  <div class="ttl">受賞歴</div>
+                  <div class="txt">{{projectContent.awards}}</div>
+                </div>
+              </div>
+              <footer>
+                <p>Copyright © 2021 Chen TzuYin All Rights Reserved.</p>
+              </footer>
+            </div>
+          </div>
+          <div class="design" id="design" v-else>
+            <div class="design-content">
+              <div class="content">
+                <img v-for="img in designContent.img" :src="img" alt="" />
+              </div>
+              <footer>
+                <p>Copyright © 2021 Chen TzuYin All Rights Reserved.</p>
+              </footer>
+            </div>
+            <div class="design-nav">
+              <button class="btn-lf" @click="delta(-1)">◀︎</button>
+              <button class="btn-rt" @click="delta(1)">▶︎</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery-2.0.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+      var project = new Vue({
+        el: '#app',
+        data: {
+          projectContents: [
+            {
+              nav: {
+                title: 'Weekly Menu!',
+                type: 'Webアプリ',
+                id: 'weeklyMenu',
+                url: 'url(images/works/thumbnail/card-project1.png)',
+              },
+              title: 'Weekly menu!ーー何を食べる？｜ランダムご飯決めくん',
+              thumbnail: 'images/works/thumbnail/project1.gif',
+              descrip:
+                'お食事のリストを作り、ランダムで決めてくれるWebアプリです。Rakuten Recipe apiを使用し、レシピランキングから人気の料理の追加も可能となっています。',
+              skills: [
+                'images/skill-icon/react.png',
+                'images/skill-icon/firebase.png',
+                'images/skill-icon/rakutenapi.png',
+              ],
+              link: 'https://weekly-dinner.firebaseapp.com/',
+              role: '1人 / UIデザイン、ロゴデザイン、アイコンデザイン、コーディング',
+              background:
+                '初めての進級制作展に向けて、なるべく多くの人々をターゲットにしたものを作ろうと、食事関連なアプリを制作する方向へ進みました。食事を決めるのが面倒がりな人、いつも悩んでしまうユーザーに、食べたい食事の候補を入力して頂き、ランダムで一週間の食事リストが決められます。当時は手入力だけですが、今ではApiを導入し、食事ランキングから気になるものを追加できます。レシピも取得できますので買い出しにもお役に立ちます。',
+              awards: '１年次進級制作展（HAL EVENT WEEK）銅賞',
+              target: '食事をする人たち、ご飯を作る人、15才〜60才',
+              kodawaris: [
+                'レスポンシブ対応',
+                'React.jsを使い、ダウンロード不要のWebアプリ',
+                'Googleアカウントと連携し、自分だけのリストを保存',
+                'Apiを導入し、簡単にレシピをリストイン',
+              ],
+            },
+            {
+              nav: {
+                title: 'NudoNudo',
+                type: 'Webサイト',
+                id: 'nudonudo',
+                url: 'url(images/works/thumbnail/card-project2.png)',
+              },
+              title: 'NudoNudo カメラマンサービスサイト',
+              thumbnail: 'images/works/thumbnail/project2.gif',
+              descrip: '仮想カメラマンサービスの公式サイトを想定して制作したサイトです。',
+              skills: [
+                'images/skill-icon/html-icon.png',
+                'images/skill-icon/sass.svg',
+                'images/skill-icon/js-icon.png',
+              ],
+              link: 'https://amfever505.github.io/original-photography-website/',
+              role: '1人 / UIデザイン、ロゴデザイン、コーディング、素材写真',
+              background:
+                'WEB制作の授業で仮想の公式サイトを作ることになり、自分は趣味で撮影をしているので、カメラマンのサービスサイトを作ってみようと決めて、制作させて頂きました。技術的に苦労したところはScss使ったのは初めてで理解に時間かかったところと、fullpage.jsというjQueryを使った原因でRWD的にCSSの調整が大変でした。',
+              target: '18才〜40才、男女不問、カメラ・撮影に興味ある方',
+              kodawaris: [
+                'レスポンシブ対応',
+                '使ったことがない技術を使う（Scss）',
+                '画面いっぱいに収める全画面ページのデザイン',
+              ],
+            },
+            {
+              nav: {
+                title: 'CHONGYUE',
+                type: 'Webサイト',
+                id: 'chongyue',
+                url: 'url(images/works/thumbnail/card-project3.png)',
+              },
+              title: 'CHONGYUEーーロードバイク専門店',
+              thumbnail: 'images/works/thumbnail/project3.gif',
+              descrip: '仮想ショップの公式サイトを想定して制作したサイトです。',
+              skills: [
+                'images/skill-icon/html-icon.png',
+                'images/skill-icon/tailwindcss.svg',
+                'images/skill-icon/js-icon.png',
+              ],
+              link: 'https://amfever505.github.io/chongyue/',
+              role: '1人 / UIデザイン、コーディング',
+              background:
+                '仮想ショップサイトという課題で、まだホームページがない台湾にある実家の自転車屋のサイトを選定し作ってみました。ネットで調べたところ、台湾に行ってロードバイクのお店の巡礼をする方もいらっしゃるようで、SNS以外に公式サイトがあるとよりわかりやすいじゃないかと。ロードバイクのターゲットはわりと年齢層広めですが、やはり男性の方が多く全体的基調を暗めにしました。ロードバイクで登山や通勤などエコなイメージなので、装飾色に緑を入れており、さらにロゴにお店オリジナルのサイクルジャージのピンクも入れております。',
+              target: '自転車が好きな方、アウトドアが好きな方、15才〜60才',
+              kodawaris: ['レスポンシブ対応', '使ったことがない技術を使う（Tailwinds CSS）'],
+            },
+            {
+              nav: {
+                title: 'My Resume',
+                type: 'Webサイト',
+                id: 'myResume',
+                url: 'url(images/works/thumbnail/card-project6.png)',
+              },
+              title: 'My Resume',
+              thumbnail: 'images/works/thumbnail/project6.gif',
+              descrip: '個人の履歴書サイトです',
+              skills: [
+                'images/skill-icon/html-icon.png',
+                'images/skill-icon/jquery.svg',
+                'images/skill-icon/bootstrap.svg',
+              ],
+              link: 'https://amfever505.github.io/my-cv',
+              role: '1人 / コーディング、素材写真',
+              background:
+                '就業経験、学歴に少し複雑である自分の履歴書を見やすくするために制作したサイトであります。Webの勉強をしてから初めて1から最後まで制作したサイトなので、UIデザインこそいろんなサイトから参考しましたが、中身は自分の今までの経験、素材も自分のものなので、ボリュームのある出来ではあるかと思います。作品をアピールするためのポートフォリオサイトと違って、人生の積み重ねであり今後も随時レベルアップしていく予定です。まだ勉強し始めた頃の制作だったので、Bootstrap、jQueryベースのライブラリーを使い、レイアウトと動きを簡単に実装できて最後まで仕上がりました。',
+              target: '企業側の方、25才〜50才',
+              kodawaris: [
+                'レスポンシブ対応',
+                'jQueryライブラリーによりアニメーションの実装',
+                'ランディングページデザイン',
+              ],
+            },
+            {
+              nav: {
+                title: 'SNS animation',
+                type: 'Webサイト',
+                id: 'snsAnimation',
+                url: 'url(images/works/thumbnail/card-project8.png)',
+              },
+              title: 'SNS アニメーション',
+              thumbnail: 'images/works/thumbnail/project8.gif',
+              descrip: '@keyframesを使い、軽量で派手なアニメーションを実現したWebサイトです。',
+              skills: [
+                'images/skill-icon/html-icon.png',
+                'images/skill-icon/css-icon.png',
+                'images/skill-icon/jquery.svg',
+              ],
+
+              role: '1人 / UIデザイン、コーディング、素材写真',
+              background:
+                '@keyframesに興味を持ち、派手なアニメーションをCSSだけで実現してみたいと考え、制作に入りました。見栄えといえばSNSであるInstagramなので、Instagramにしました。ただ見ていて楽しいという作品を制作しました。CSS アニメーションだけですが、細かい時間軸の調整、パーツの大きさ、色など調整の箇所が多くて、時間をかけて作りました。',
+              target: '10才〜35才、若い女性',
+              kodawaris: ['Pure HTML Pure CSS', '@keyframesアニメーションにおける時間の細かい計算'],
+            },
+            {
+              nav: {
+                title: 'SEKIGAE',
+                type: 'Webアプリ',
+                id: 'sekigae',
+                url: 'url(images/works/thumbnail/card-project10.png)',
+              },
+              title: 'SEKIGAEーー席替えアプリ',
+              thumbnail: 'images/works/thumbnail/project10.gif',
+              descrip: 'JavascriptのDOM操作だけで実現した席替えアプリケーションです。',
+              skills: [
+                'images/skill-icon/html-icon.png',
+                'images/skill-icon/css-icon.png',
+                'images/skill-icon/js-icon.png',
+              ],
+              link: 'https://amfever505.github.io/sekigae/',
+              role: '1人 / UIデザイン、コーディング',
+              background:
+                'DOM操作をきちんと理解するため、ライブラリーやフレームワークを使わず素のJavascriptだけで制作しました。記述量が多くなってしまいますが、DOM操作がちゃんと理解できた上での出来なので、他のプロジェクトでjavascriptベースのフレームワーク（React.js、Vue.js）やjQueryなどでつまずく時に役に立ちます。',
+              target: '18才〜50才、チームワークやオフィスや少人数クラスにて席替えを担当する方',
+              kodawaris: ['Pure javascript'],
+            },
+            {
+              nav: {
+                title: 'Portfolio',
+                type: 'Webサイト',
+                id: 'portfolio',
+                url: 'url(images/works/thumbnail/card-project11.png)',
+              },
+              title: 'ポートフォリオサイト',
+              thumbnail: 'images/works/thumbnail/project11.gif',
+              descrip: '制作物を載せたポートフォリオサイトです。',
+              skills: ['images/skill-icon/html-icon.png', 'images/skill-icon/sass.svg', 'images/skill-icon/vue.png'],
+
+              role: '1人 / UIデザイン、コーディング、素材写真',
+              background:
+                '学校で勉強したものと自分で制作したものをまとめたいので、デザインからサイトを制作しました。履歴書のサイトと違って、作品をメインで見て欲しいので、極端にシンプルなデザインを意識して、他の参考をせずに自分の作品に合うUIデザインを考えました。まだVue.jsを使ったことないですが、サイトの性質上Vue.jsは一番ふさわしいと考え、Vue.jsを勉強しながら2日で完成しました。',
+              target: '18才〜50才、学生、クリエイター、企業の方',
+              kodawaris: [
+                'Vue.jsにより動的にコンテンツの切り替え',
+                'シンプルで洗練されたデザイン',
+                '自作のCSSアニメーション',
+              ],
+            },
+          ],
+          designContents: [
+            { name: 'NudoNudo', img: ['images/works/design/NudoNudo-1.jpg', 'images/works/design/NudoNudo-2.jpg'] },
+            {
+              name: 'CHONGYUE',
+              img: [
+                'images/works/design/CHONGYUE-1.jpg',
+                'images/works/design/CHONGYUE-2.jpg',
+                'images/works/design/CHONGYUE-3.jpg',
+                'images/works/design/CHONGYUE-4.jpg',
+                'images/works/design/CHONGYUE-5.jpg',
+              ],
+            },
+            {
+              name: 'MyDentity',
+              img: ['images/works/design/myDentity-1.jpg', 'images/works/design/myDentity-2.jpg'],
+            },
+          ],
+          projectFlg: true,
+          selectedCardIndex: 0,
+          selectedDesignIndex: 0,
+        },
+        computed: {
+          projectContent() {
+            return this.projectContents[this.selectedCardIndex];
+          },
+          designContent() {
+            return this.designContents[this.selectedDesignIndex];
+          },
+        },
+        methods: {
+          projectPage: function () {
+            this.projectFlg = !this.projectFlg;
+          },
+          delta(d) {
+            let checker = this.selectedDesignIndex + d;
+            console.log(checker);
+            if (checker > -1 && checker < this.designContents.length) {
+              this.selectedDesignIndex += d;
+              console.log(true);
+            }
+          },
+        },
+      });
+      // var projectContent = new Vue({
+      //   el: '#projectContent',
+      //   data: {
+      //     projectContentLists: [{ title: 'Weekly Menu!' }],
+      //   },
+      // });
+    </script>
+  </body>
+</html>
