@@ -44,15 +44,28 @@ button {
     .wrapper .flex-box .sidebar {
       width: 20%;
       height: 100vh;
-      z-index: 50;
+      z-index: 100;
       box-shadow: 0px 3px 6px #ccc;
       text-align: center;
       display: flex;
       flex-direction: column;
-      align-items: center; }
+      align-items: center;
+      background: #fff;
+      transition: all 0.5s; }
+      @media screen and (max-width: 1024px) {
+        .wrapper .flex-box .sidebar {
+          position: absolute;
+          margin-left: -40%;
+          width: 240px; } }
+    .wrapper .flex-box .sidebar.open {
+      margin-left: 0%; }
     .wrapper .flex-box .main {
       width: 80%;
-      height: 100vh; }
+      height: 100vh;
+      position: relative; }
+      @media screen and (max-width: 1024px) {
+        .wrapper .flex-box .main {
+          width: 100%; } }
 
 .profile {
   font-size: 1.5rem;
@@ -144,6 +157,9 @@ button {
     .project .project-content h2 {
       font-size: 2.5rem;
       text-align: center; }
+      @media screen and (max-width: 1024px) {
+        .project .project-content h2 {
+          font-size: 2rem; } }
     .project .project-content img {
       max-width: 600px;
       display: block;
@@ -182,7 +198,7 @@ button {
   .design-nav button:hover {
     color: #777; }
 .design-nav .btn-lf {
-  left: 20%; }
+  left: 0; }
 .design-nav .btn-rt {
   right: 0; }
 
@@ -197,6 +213,26 @@ button {
     padding: 5rem 0 0rem 0; }
     .design-content .content img {
       margin-bottom: 5rem; }
+
+.menu-btn {
+  position: absolute;
+  display: none;
+  z-index: 50;
+  background-color: #fff;
+  padding: 4px 8px;
+  margin-top: 12px;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0px 3px 6px #ccc;
+  font-size: 2rem;
+  transition: all 0.5s; }
+  @media screen and (max-width: 1024px) {
+    .menu-btn {
+      display: block;
+      top: 0;
+      left: 0; } }
+
+.menuTagOn {
+  left: 240px; }
 
 footer {
   height: 80px;

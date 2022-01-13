@@ -31,6 +31,7 @@ $_9-10: 90%;
 $_1-1: 100%;
 // color
 $main: #006869;
+$w_sidebar: 240px;
 * {
   box-sizing: border-box;
   padding: 0;
@@ -76,16 +77,30 @@ button {
     .sidebar {
       width: $_1-5;
       height: 100vh;
-      z-index: 50;
+      z-index: 100;
       box-shadow: 0px 3px 6px #ccc;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
+      background: #fff;
+      transition: all 0.5s;
+      @media screen and (max-width: $breakpoint_tl) {
+        position: absolute;
+        margin-left: -40%;
+        width: $w_sidebar;
+      }
+    }
+    .sidebar.open {
+      margin-left: 0%;
     }
     .main {
       width: $_4-5;
       height: 100vh;
+      position: relative;
+      @media screen and (max-width: $breakpoint_tl) {
+        width: $_1-1;
+      }
     }
   }
 }
@@ -199,6 +214,9 @@ button {
     h2 {
       font-size: 2.5rem;
       text-align: center;
+      @media screen and (max-width: $breakpoint_tl) {
+        font-size: 2rem;
+      }
     }
     img {
       max-width: 600px;
@@ -253,7 +271,7 @@ button {
     }
   }
   .btn-lf {
-    left: 20%;
+    left: 0;
   }
   .btn-rt {
     right: 0;
@@ -272,6 +290,29 @@ button {
       margin-bottom: 5rem;
     }
   }
+}
+// menu ボタン
+.menu-btn {
+  position: absolute;
+  display: none;
+  z-index: 50;
+  background-color: #fff;
+  padding: 4px 8px;
+  margin-top: 12px;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0px 3px 6px #ccc;
+
+  // border: 1px #333 solid;
+  font-size: 2rem;
+  transition: all 0.5s;
+  @media screen and (max-width: $breakpoint_tl) {
+    display: block;
+    top: 0;
+    left: 0;
+  }
+}
+.menuTagOn {
+  left: $w_sidebar;
 }
 // footer
 footer {

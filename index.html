@@ -13,13 +13,13 @@
   <body>
     <div class="wrapper">
       <div class="flex-box" id="app">
-        <div class="sidebar">
+        <div class="sidebar" v-bind:class="{open: isMenuTag}">
           <div class="profile">
             <img src="images/profile-icon.png" alt="" />
             <div class="txt">
               陳　姿穎<br />
-              専門学校HAL東京<br />
-              IT学部WEB学科 2年生
+              HAL東京<br />
+              IT学部WEB学科 2年
             </div>
           </div>
           <div class="navGroup" v-bind:class="{navAct: !projectFlg}">
@@ -109,6 +109,7 @@
               <button class="btn-rt" @click="delta(1)">▶︎</button>
             </div>
           </div>
+          <button class="menu-btn" v-bind:class="{menuTagOn: isMenuTag}" v-on:click="menuSwitch">»</button>
         </div>
       </div>
     </div>
@@ -310,6 +311,7 @@
           projectFlg: true,
           selectedCardIndex: 0,
           selectedDesignIndex: 0,
+          isMenuTag: false,
         },
         computed: {
           projectContent() {
@@ -330,6 +332,9 @@
               this.selectedDesignIndex += d;
               console.log(true);
             }
+          },
+          menuSwitch: function () {
+            this.isMenuTag = !this.isMenuTag;
           },
         },
       });
