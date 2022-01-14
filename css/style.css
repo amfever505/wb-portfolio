@@ -150,6 +150,9 @@ button {
     height: 73vh;
     overflow-y: scroll;
     margin: auto; }
+    @media screen and (max-width: 1024px) {
+      .project .project-content {
+        width: 90%; } }
     .project .project-content .content {
       margin-bottom: 120px; }
     .project .project-content::-webkit-scrollbar {

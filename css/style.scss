@@ -205,6 +205,9 @@ button {
     height: 73vh;
     overflow-y: scroll;
     margin: auto;
+    @media screen and (max-width: $breakpoint_tl) {
+      width: $_9-10;
+    }
     .content {
       margin-bottom: 120px;
     }
