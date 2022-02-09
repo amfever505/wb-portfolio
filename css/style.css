@@ -164,7 +164,8 @@ button {
       @media screen and (max-width: 1024px) {
         .project .project-content h2 {
           font-size: 2rem; } }
-    .project .project-content img {
+    .project .project-content img,
+    .project .project-content video {
       max-width: 600px;
       display: block;
       margin: 6rem auto; }

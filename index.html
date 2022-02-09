@@ -51,7 +51,15 @@
               <!-- <div v-for="projectContent in projectContents" class="content"> -->
               <div class="content">
                 <h2>{{projectContent.title}}</h2>
-                <img :src="projectContent.thumbnail" alt="" />
+                <div class="thumnail-box">
+                  <img v-if="projectContent.thumbnail" :src="projectContent.thumbnail" alt="" />
+                  <!-- 動画 -->
+                  <video v-if="projectContent.mp4" loop muted autoplay playsinline>
+                    <source :src="projectContent.mp4" type="video/mp4" />
+                    <p>動画が表示されない際のメッセージ.</p>
+                  </video>
+                </div>
+
                 <div class="detailRow">
                   <div class="ttl">概要</div>
                   <div class="txt">{{projectContent.descrip}}</div>
@@ -116,6 +124,9 @@
     </div>
 
     <script src="js/jquery-2.0.2.min.js"></script>
+    <!-- <script async src="https://www.youtube.com/iframe_api"></script> -->
+    <script src="vue-youtube/dist/vue-youtube.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script>
       var project = new Vue({
@@ -159,7 +170,8 @@
                 url: 'url(images/works/thumbnail/card-project2.png)',
               },
               title: 'NudoNudo カメラマンサービスサイト',
-              thumbnail: 'images/works/thumbnail/project2.gif',
+              // thumbnail: 'images/works/thumbnail/project2.gif',
+              mp4: 'images/works/thumbnail/project2.mp4',
               descrip: '仮想カメラマンサービスの公式サイトを想定して制作したサイトです。',
               skills: [
                 'images/skill-icon/html-icon.png',
@@ -176,6 +188,7 @@
                 '使ったことがない技術を使う（Scss）',
                 '画面いっぱいに収める全画面ページのデザイン',
               ],
+              YT: ['AtdBQkgHNhU'],
             },
             {
               nav: {
@@ -356,6 +369,7 @@
               console.log(true);
             }
           },
+
           menuSwitch: function () {
             this.isMenuTag = !this.isMenuTag;
           },
