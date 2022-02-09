@@ -30,7 +30,7 @@
         </div>
         <div class="main" id="main">
           <div class="project" id="project" v-if="projectFlg">
-            <div class="project-nav">
+            <div class="project-nav" ref="projectNav">
               <button
                 v-for="(projectContent,index) in projectContents"
                 @click="selectedCardIndex = index"

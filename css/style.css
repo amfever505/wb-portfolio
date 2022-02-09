@@ -6,8 +6,6 @@
   margin: 0;
   font-family: 'Arya', 'Murecho', sans-serif;
   color: #777; }
-  *::-webkit-scrollbar {
-    display: none; }
 
 header,
 footer,
@@ -102,12 +100,19 @@ button {
   .project .project-nav {
     display: flex;
     padding: 2rem 0 5rem 2rem;
-    overflow-x: scroll;
+    overflow-x: hidden;
     flex-direction: row;
     flex-wrap: nowrap;
-    height: 27vh; }
-    .project .project-nav::-webkit-scrollbar {
-      display: none; }
+    height: 27vh;
+    position: relative; }
+    .project .project-nav:hover {
+      overflow-x: scroll; }
+      .project .project-nav:hover::-webkit-scrollbar {
+        width: 6px;
+        height: 6px; }
+      .project .project-nav:hover::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+        background-color: #eee; }
     .project .project-nav .card {
       height: 150px;
       width: 180px;
@@ -146,6 +151,8 @@ button {
         color: #aaa;
         font-size: 12px;
         line-height: 1; }
+  .project .project-nav-hover::-webkit-scrollbar {
+    display: block; }
   .project .project-content {
     width: 80%;
     height: 73vh;

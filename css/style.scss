@@ -39,7 +39,7 @@ $w_sidebar: 240px;
   font-family: 'Arya', 'Murecho', sans-serif;
   color: #777;
   &::-webkit-scrollbar {
-    display: none;
+    // display: none;
   }
 }
 header,
@@ -147,12 +147,21 @@ button {
   .project-nav {
     display: flex;
     padding: 2rem 0 5rem 2rem;
-    overflow-x: scroll;
+    overflow-x: hidden;
     flex-direction: row;
     flex-wrap: nowrap;
     height: 27vh;
-    &::-webkit-scrollbar {
-      display: none;
+    position: relative;
+    &:hover {
+      overflow-x: scroll;
+      &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+        background-color: #eee;
+      }
     }
     .card {
       height: 150px;
@@ -199,6 +208,11 @@ button {
         font-size: 12px;
         line-height: 1;
       }
+    }
+  }
+  .project-nav-hover {
+    &::-webkit-scrollbar {
+      display: block;
     }
   }
   .project-content {
