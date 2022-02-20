@@ -70,7 +70,9 @@ button {
   font-size: 1.5rem;
   padding: 4rem 1rem; }
   .profile img {
-    margin: 0 0 4rem 0; }
+    margin: 0 0 4rem 0;
+    border-radius: 50%;
+    max-width: 200px; }
 
 .navGroup {
   position: relative; }
@@ -99,20 +101,20 @@ button {
   flex-direction: column; }
   .project .project-nav {
     display: flex;
-    padding: 2rem 0 5rem 2rem;
-    overflow-x: hidden;
+    padding: 2rem 0 4rem 2rem;
+    overflow-x: scroll;
     flex-direction: row;
     flex-wrap: nowrap;
     height: 27vh;
     position: relative; }
-    .project .project-nav:hover {
-      overflow-x: scroll; }
-      .project .project-nav:hover::-webkit-scrollbar {
-        width: 6px;
-        height: 6px; }
-      .project .project-nav:hover::-webkit-scrollbar-thumb {
-        border-radius: 6px;
-        background-color: #eee; }
+    .project .project-nav::-webkit-scrollbar {
+      height: 6px;
+      opacity: 0; }
+    .project .project-nav:hover::-webkit-scrollbar {
+      opacity: 1; }
+    .project .project-nav:hover::-webkit-scrollbar-thumb {
+      border-radius: 6px;
+      background-color: #eee; }
     .project .project-nav .card {
       height: 150px;
       width: 180px;

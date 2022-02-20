@@ -111,6 +111,8 @@ button {
   padding: 4rem 1rem;
   img {
     margin: 0 0 4rem 0;
+    border-radius: 50%;
+    max-width: 200px;
   }
 }
 .navGroup {
@@ -146,17 +148,21 @@ button {
   flex-direction: column;
   .project-nav {
     display: flex;
-    padding: 2rem 0 5rem 2rem;
-    overflow-x: hidden;
+    padding: 2rem 0 4rem 2rem;
+    // overflow-x: hidden;
+    overflow-x: scroll;
     flex-direction: row;
     flex-wrap: nowrap;
     height: 27vh;
     position: relative;
+    &::-webkit-scrollbar {
+      height: 6px;
+      opacity: 0;
+    }
+
     &:hover {
-      overflow-x: scroll;
       &::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
+        opacity: 1;
       }
       &::-webkit-scrollbar-thumb {
         border-radius: 6px;
