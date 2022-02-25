@@ -9,6 +9,7 @@
 
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -58,6 +59,7 @@
                     <source :src="projectContent.mp4" type="video/mp4" />
                     <p>動画が表示されない際のメッセージ.</p>
                   </video>
+                  <div id="spinner"></div>
                 </div>
 
                 <div class="detailRow">
@@ -123,10 +125,10 @@
       </div>
     </div>
 
-    <script src="js/jquery-2.0.2.min.js"></script>
-    <!-- <script async src="https://www.youtube.com/iframe_api"></script> -->
-    <script src="vue-youtube/dist/vue-youtube.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script src="./js/custom.js"></script>
 
+    <script src="vue-youtube/dist/vue-youtube.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script>
       var project = new Vue({
@@ -164,6 +166,25 @@
             },
             {
               nav: {
+                title: 'FARME',
+                type: 'Webサイト/ECサイト',
+                id: 'farme',
+                url: 'url(images/works/thumbnail/card-project0.png)',
+              },
+              title: 'FARMEーーカスタマイズ額縁ECサイト',
+              thumbnail: 'images/works/thumbnail/project0.png',
+              descrip: '仮想のカスタマイズ額縁ECサイト。カスタマイズした商品がARで目の前に現します。',
+              skills: ['images/skill-icon/html-icon.png', 'images/skill-icon/js-icon.png'], //php 3js arjs heroku
+              // link: 'https://weekly-dinner.firebaseapp.com/',
+              role: '6人 / チームリーダー、コーディング（javascript/three.js/ar.js）',
+              background:
+                'コロナ禍で世の中通販の需要がさらに増えると想定し、オーダーメイドの通販では実物が届くまではイメージしにくいので、Web ARの技術と3Dでイメージしながらカスタマイズできる通販があればイメージのずれは多少避けられるかと考えて開発しました。遊び感覚でユーザーに気軽に使ってもらえればと思います。',
+              // awards: '１年次進級制作展（HAL EVENT WEEK）銅賞',
+              target: '額縁で部屋を飾りたい成人の方、通販が好きな方、18才〜50才',
+              kodawaris: ['three.js ar.jsなどWebで3Dを扱うライブラリの使用', 'チーム開発', '洗練したデザイン'],
+            },
+            {
+              nav: {
                 title: 'NudoNudo',
                 type: 'Webサイト',
                 id: 'nudonudo',
@@ -182,6 +203,7 @@
               role: '1人 / UIデザイン、ロゴデザイン、コーディング、素材写真',
               background:
                 'WEB制作の授業で仮想の公式サイトを作ることになり、自分は趣味で撮影をしているので、カメラマンのサービスサイトを作ってみようと決めて、制作させて頂きました。技術的に苦労したところはScss使ったのは初めてで理解に時間かかったところと、fullpage.jsというjQueryを使った原因でRWD的にCSSの調整が大変でした。',
+              awards: '校内コンテスト　構成力賞',
               target: '18才〜40才、男女不問、カメラ・撮影に興味ある方',
               kodawaris: [
                 'レスポンシブ対応',
@@ -329,6 +351,8 @@
           ],
           designContents: [
             { name: 'NudoNudo', img: ['images/works/design/NudoNudo-1.jpg', 'images/works/design/NudoNudo-2.jpg'] },
+            { name: 'CAFEdePARIS', img: ['images/works/design/CAFEdePARIS-1.jpg'] },
+
             {
               name: 'CHONGYUE',
               img: [
