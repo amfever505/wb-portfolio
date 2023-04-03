@@ -19,9 +19,10 @@
             <img src="images/about.jpg" alt="" />
             <div class="txt">
               CHEN TZU YIN<br />
+              チェン　ツイン<br />
               HAL東京<br />
-              IT学部 WEB学科 2年<br />
-              2022/9 卒業見込み
+              IT学部 WEB学科 2年制<br />
+              2022/9 卒業
             </div>
           </div>
           <div class="navGroup" v-bind:class="{navAct: !projectFlg}">
@@ -32,11 +33,7 @@
         <div class="main" id="main">
           <div class="project" id="project" v-if="projectFlg">
             <div class="project-nav" ref="projectNav">
-              <button
-                v-for="(projectContent,index) in projectContents"
-                @click="selectedCardIndex = index"
-                :id="'web-' + projectContent.nav.id"
-              >
+              <button v-for="(projectContent,index) in projectContents" @click="selectedCardIndex = index" :id="'web-' + projectContent.nav.id">
                 <div class="card">
                   <div class="imgbox">
                     <div class="imgbox__inner imgbox__inner--4-3">
@@ -153,7 +150,8 @@
                 'images/skill-icon/threejs.png',
                 'images/skill-icon/arjs.png',
               ],
-              link: 'https://farme-2022.herokuapp.com/',
+              // link: 'https://farme-2022.herokuapp.com/',
+              link: '',
               role: '6人 / チームリーダー、コーディング（javascript/three.js/ar.js）',
               background:
                 'コロナ禍で世の中通販の需要がさらに増えると想定し、オーダーメイドの通販では実物が届くまではイメージしにくいので、Web ARの技術と3Dでイメージしながらカスタマイズできる通販があれば、イメージのずれは多少避けられるかと考えて開発しました。遊び感覚でユーザーに気軽に使ってもらえればと思います。',
@@ -171,25 +169,15 @@
               },
               title: 'Weekly menu!ーー何を食べる？｜ランダムご飯決めくん',
               thumbnail: 'images/works/thumbnail/project1.gif',
-              descrip:
-                'お食事のリストを作り、ランダムで決めてくれるWebアプリです。Rakuten Recipe apiを使用し、レシピランキングから人気の料理の追加も可能となっています。',
-              skills: [
-                'images/skill-icon/react.png',
-                'images/skill-icon/firebase.png',
-                'images/skill-icon/rakutenapi.png',
-              ],
+              descrip: 'お食事のリストを作り、ランダムで決めてくれるWebアプリです。Rakuten Recipe apiを使用し、レシピランキングから人気の料理の追加も可能となっています。',
+              skills: ['images/skill-icon/react.png', 'images/skill-icon/firebase.png', 'images/skill-icon/rakutenapi.png'],
               link: 'https://weekly-dinner.firebaseapp.com/',
               role: '1人 / UIデザイン、ロゴデザイン、アイコンデザイン、コーディング',
               background:
                 '初めての進級制作展に向けて、なるべく多くの人々をターゲットにしたものを作ろうと、食事関連のアプリを制作してみました。食事を決めるのが面倒がりな人、いつも悩んでしまうという課題点に気付き、食べたい食事の候補を入力するだけでランダムでお食事を決められるアプリを作りました。最初は手入力だけですが、先生方に使っていただき、手入力の手間をかかりたくない人向けの何かが欲しいとアドバイスを頂きました。レシピApiを導入し、食事ランキングから気になるものを追加できるように改善しました。レシピも取得できますので買い出しにもお役に立ちます。',
               awards: '2021 進級制作展（HAL EVENT WEEK）銅賞　（3位/約100人）',
               target: '食事をする人たち、ご飯を作る人、15才〜60才',
-              kodawaris: [
-                'レスポンシブ対応',
-                'React.jsを使い、ダウンロード不要のWebアプリ',
-                'Googleアカウントと連携し、自分だけのリストを保存',
-                'Apiを導入し、簡単にレシピをリストイン',
-              ],
+              kodawaris: ['レスポンシブ対応', 'React.jsを使い、ダウンロード不要のWebアプリ', 'Googleアカウントと連携し、自分だけのリストを保存', 'Apiを導入し、簡単にレシピをリストイン'],
             },
             {
               nav: {
@@ -202,22 +190,14 @@
               // thumbnail: 'images/works/thumbnail/project2.gif',
               mp4: 'images/works/thumbnail/project2.mp4',
               descrip: '仮想カメラマンサービスの公式サイトを想定して制作したサイトです。',
-              skills: [
-                'images/skill-icon/html-icon.png',
-                'images/skill-icon/sass.svg',
-                'images/skill-icon/js-icon.png',
-              ],
+              skills: ['images/skill-icon/html-icon.png', 'images/skill-icon/sass.svg', 'images/skill-icon/js-icon.png'],
               link: 'https://amfever505.github.io/original-photography-website/',
               role: '1人 / UIデザイン、ロゴデザイン、コーディング、素材写真',
               background:
                 'WEB制作の授業で仮想の公式サイトを作ることになり、自分は趣味で撮影をしているので、カメラマンのサービスサイトを作ってみようと決めて、制作させて頂きました。技術的に苦労したところはScss使ったのは初めてで理解に時間かかったところと、fullpage.jsというjQueryを使った原因でRWD的にCSSの調整が大変でした。',
               awards: '校内コンテスト　構成力賞',
               target: '18才〜40才、男女不問、カメラ・撮影に興味ある方',
-              kodawaris: [
-                'レスポンシブ対応',
-                '使ったことがない技術を使う（Scss）',
-                '画面いっぱいに収める全画面ページのデザイン',
-              ],
+              kodawaris: ['レスポンシブ対応', '使ったことがない技術を使う（Scss）', '画面いっぱいに収める全画面ページのデザイン'],
               YT: ['AtdBQkgHNhU'],
             },
             {
@@ -236,11 +216,7 @@
               background:
                 '学校で勉強したものと自分で制作したものをまとめたいので、デザインからサイトを制作しました。履歴書のサイトと違って、作品をメインで見て欲しいので、極端にシンプルなデザインを意識して、他の参考をせずに自分の作品に合うUIデザインを考えました。まだVue.jsを使ったことないですが、サイトの性質上Vue.jsは一番ふさわしいと考え、Vue.jsを勉強しながら2日で完成しました。',
               target: '18才〜50才、学生、クリエイター、企業の方',
-              kodawaris: [
-                'Vue.jsにより動的にコンテンツの切り替え',
-                'シンプルで洗練されたデザイン',
-                '自作のCSSアニメーション',
-              ],
+              kodawaris: ['Vue.jsにより動的にコンテンツの切り替え', 'シンプルで洗練されたデザイン', '自作のCSSアニメーション'],
             },
             {
               nav: {
@@ -252,11 +228,7 @@
               title: '神経衰弱',
               thumbnail: 'images/works/thumbnail/project12.gif',
               descrip: '課題で作ったWebのミニゲームです。自分で組んだスクリプトですがパソコンが対戦相手になります。',
-              skills: [
-                'images/skill-icon/html-icon.png',
-                'images/skill-icon/css-icon.png',
-                'images/skill-icon/js-icon.png',
-              ],
+              skills: ['images/skill-icon/html-icon.png', 'images/skill-icon/css-icon.png', 'images/skill-icon/js-icon.png'],
               link: 'https://amfever505.github.io/sinkeisuijaku/',
               role: '1人 / UIデザイン、コーディング',
               background:
@@ -275,11 +247,7 @@
               title: 'CHONGYUEーーロードバイク専門店',
               thumbnail: 'images/works/thumbnail/project3.gif',
               descrip: '仮想ショップの公式サイトを想定して制作したサイトです。',
-              skills: [
-                'images/skill-icon/html-icon.png',
-                'images/skill-icon/tailwindcss.svg',
-                'images/skill-icon/js-icon.png',
-              ],
+              skills: ['images/skill-icon/html-icon.png', 'images/skill-icon/tailwindcss.svg', 'images/skill-icon/js-icon.png'],
               link: 'https://amfever505.github.io/chongyue/',
               role: '1人 / UIデザイン、コーディング',
               background:
@@ -297,21 +265,13 @@
               title: 'My Resume',
               thumbnail: 'images/works/thumbnail/project6.gif',
               descrip: '個人の履歴書サイトです。',
-              skills: [
-                'images/skill-icon/html-icon.png',
-                'images/skill-icon/jquery.svg',
-                'images/skill-icon/bootstrap.svg',
-              ],
+              skills: ['images/skill-icon/html-icon.png', 'images/skill-icon/jquery.svg', 'images/skill-icon/bootstrap.svg'],
               link: 'https://amfever505.github.io/my-cv',
               role: '1人 / コーディング、素材写真',
               background:
                 '就業経験、学歴に少し複雑である自分の履歴書を見やすくするために制作したサイトであります。Webの勉強をしてから初めて1から最後まで制作したサイトなので、UIデザインこそいろんなサイトから参考しましたが、中身は自分の今までの経験、素材も自分のものなので、ボリュームのある出来ではあるかと思います。作品をアピールするためのポートフォリオサイトと違って、人生の積み重ねであり今後も随時レベルアップしていく予定です。まだ勉強し始めた頃の制作だったので、Bootstrap、jQueryベースのライブラリーを使い、レイアウトと動きを簡単に実装できて最後まで仕上がりました。',
               target: '企業側の方、25才〜50才',
-              kodawaris: [
-                'レスポンシブ対応',
-                'jQueryライブラリーによりアニメーションの実装',
-                'ランディングページデザイン',
-              ],
+              kodawaris: ['レスポンシブ対応', 'jQueryライブラリーによりアニメーションの実装', 'ランディングページデザイン'],
             },
             {
               nav: {
@@ -323,11 +283,7 @@
               title: 'SNS アニメーション',
               thumbnail: 'images/works/thumbnail/project8.gif',
               descrip: '@keyframesを使い、軽量で派手なアニメーションを実現したWebサイトです。',
-              skills: [
-                'images/skill-icon/html-icon.png',
-                'images/skill-icon/css-icon.png',
-                'images/skill-icon/jquery.svg',
-              ],
+              skills: ['images/skill-icon/html-icon.png', 'images/skill-icon/css-icon.png', 'images/skill-icon/jquery.svg'],
 
               role: '1人 / UIデザイン、コーディング、素材写真',
               background:
@@ -345,11 +301,7 @@
               title: 'SEKIGAEーー席替えアプリ',
               thumbnail: 'images/works/thumbnail/project10.gif',
               descrip: 'JavascriptのDOM操作だけで実現した席替えアプリケーションです。',
-              skills: [
-                'images/skill-icon/html-icon.png',
-                'images/skill-icon/css-icon.png',
-                'images/skill-icon/js-icon.png',
-              ],
+              skills: ['images/skill-icon/html-icon.png', 'images/skill-icon/css-icon.png', 'images/skill-icon/js-icon.png'],
               link: 'https://amfever505.github.io/sekigae/',
               role: '1人 / UIデザイン、コーディング',
               background:
